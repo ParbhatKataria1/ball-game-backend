@@ -8,7 +8,7 @@ const userGet = async (req, res) => {
   }
   console.log(username, obj);
   try {
-    let data = await UserModel.find(obj).sort({ score: "desc" });
+    let data = await UserModel.find(obj).sort({ score: "desc" }).limit(10);
     console.log(data);
     if (data.length == 1 && username) {
       res.status(200).send({ msg: "data of a single user", data });
